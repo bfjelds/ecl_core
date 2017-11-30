@@ -20,9 +20,9 @@ file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/include)
 
 if(DEFINED ECL_EIGEN_IS_INTERNAL_3_2_1)
     message(STATUS "Using ecl's internal eigen 3.2.1.")
-    ament_package(
-            INCLUDE_DIRS include;${PROJECT_BINARY_DIR}/include;include/eigen3.2.1;include/eigen3.2.1/Eigen   # the second directory ensures the unsupported modules are available
-            )
+    #ament_package(
+    #        INCLUDE_DIRS include;${PROJECT_BINARY_DIR}/include;include/eigen3.2.1;include/eigen3.2.1/Eigen   # the second directory ensures the unsupported modules are available
+    #        )
 elseif(DEFINED ECL_EIGEN_IS_INTERNAL_3_1_2)
 #    set(ECL_EIGEN_IS_INTERNAL_3_1_2 1)
     message(STATUS "Using ecl's internal eigen.")
@@ -43,16 +43,16 @@ else()
         if(NOT EIGEN3_INCLUDE_DIRS)
           set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
         endif()
-        ament_package(
-            INCLUDE_DIRS include;${PROJECT_BINARY_DIR}/include
-            DEPENDS EIGEN3
-        )
+        #ament_package(
+        #    INCLUDE_DIRS include;${PROJECT_BINARY_DIR}/include
+        #    DEPENDS EIGEN3
+        #)
     else()
         message(STATUS "Eigen not found...using ecl's internal eigen.")
         set(ECL_EIGEN_IS_INTERNAL_3_1_2 1 CACHE BOOL "Using ecl's internal eigen implementation version 3.1.2")
-        ament_package(
-            INCLUDE_DIRS ${PROJECT_BINARY_DIR}/include;include/eigen3.1.2;include/eigen3.1.2/Eigen   # the second directory ensures the unsupported modules are available
-        )
+        #ament_package(
+        #    INCLUDE_DIRS ${PROJECT_BINARY_DIR}/include;include/eigen3.1.2;include/eigen3.1.2/Eigen   # the second directory ensures the unsupported modules are available
+        #)
     endif()
 endif()
 
@@ -76,7 +76,7 @@ install(
 
 install(
   DIRECTORY include/eigen3.1.2/Eigen
-  DESTINATION include/ecl
+  DESTINATION include
 )
 
 ##############################################################################
